@@ -10,6 +10,8 @@ coverage
 
 # Optional npm cache directory
 .npm
+node_modules
+src/config
 
 # Optional eslint cache
 .eslintcache
