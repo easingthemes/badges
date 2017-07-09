@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { GLOBAL } from '../App/constants';
-import { responseTest } from '../../config/FE-issue.js';
+
 import {
     DEFAULT_ACTION,
     GET_BADGES,
@@ -9,6 +9,7 @@ import {
 
 const API_URL = GLOBAL.API_URL;
 const EPIC_PATH = GLOBAL.EPIC_PATH;
+const responseJson = require('../../response/index.json');
 
 export function defaultAction() {
   return {
@@ -26,9 +27,10 @@ export function getBadges() {
       });
     })
     .catch((error) => {
+        console.log(responseJson);
       dispatch({
         type: GET_BADGES,
-        payload: responseTest
+        payload: responseJson
       });
     })
   }

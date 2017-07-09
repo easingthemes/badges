@@ -21,7 +21,8 @@ class App extends Component {
         <Header location={this.props.location} />
         <div className="container">
             <Switch>
-                <Route path="/badges" component={Badges} />
+              <Route path="/" component={Badges} />
+              <Route path="/badges" component={Badges} />
             </Switch>
         </div>
       </div>

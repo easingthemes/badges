@@ -11,7 +11,7 @@ coverage
 # Optional npm cache directory
 .npm
 node_modules
-src/config
+src/response
 
 # Optional eslint cache
 .eslintcache
