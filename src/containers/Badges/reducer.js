@@ -15,13 +15,9 @@ function badgesPageReducer(state = initialState, action) {
       return state;
 
     case GET_BADGES:
-        const badges = action.payload.issues || [];
-        const total = action.payload.total || 0;
-      console.log(typeof action.payload.issues);
-        console.log(action.payload.issues);
       return state
-        .set('badges', badges)
-        .set('total', total);
+        .set('badges', action.payload.badges)
+        .set('total', action.payload.total);
     default:
       return state;
   }

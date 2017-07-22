@@ -1,15 +1,11 @@
 import axios from 'axios';
-
-import { GLOBAL } from '../App/constants';
+import { filterIssues } from '../../helpers/filterIssues';
+import { API_URL } from '../App/constants';
 
 import {
     DEFAULT_ACTION,
     GET_BADGES,
 } from './constants';
-
-const API_URL = GLOBAL.API_URL;
-const EPIC_PATH = GLOBAL.EPIC_PATH;
-const responseJson = require('../../response/index.json');
 
 export function defaultAction() {
   return {
@@ -17,20 +13,19 @@ export function defaultAction() {
   };
 }
 
-export function getBadges() {
+export function getBadges(epicId) {
   return function(dispatch) {
-      axios.get(`${API_URL}/${EPIC_PATH}/NCPW-61/issue`)
+    axios.get(`${API_URL}epic/${epicId}/issue`)
     .then(response => {
       dispatch({
         type: GET_BADGES,
-        payload: response.data
+        payload: filterIssues(response.data)
       });
     })
-    .catch((error) => {
-        console.log(responseJson);
+    .catch(error => {
       dispatch({
         type: GET_BADGES,
-        payload: responseJson
+        payload: error
       });
     })
   }

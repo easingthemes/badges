@@ -7,24 +7,26 @@ import {
   getBadges,
 } from './actions';
 
-import TableBadges from '../../components/Table/TableBadges';
+import Table from '../../components/Table/Table';
 
 class Badges extends Component {
   componentDidMount() {
-    const badges = this.props.badges || [];
+    const match = this.props.match || {};
+    const params = match.params || {};
+    const id = params.pathwayId || '';
 
-    if (badges.length === 0) {
-      this.props.handleGetBadges();
-    }
+    this.props.handleGetBadges(id);
   }
 
   render() {
+
     return (
       <div>
-        <TableBadges
-          badges={this.props.badges}
-          total={this.props.total}
-        />
+          <Table
+            badges={this.props.badges}
+            total={this.props.total}
+            url="/badge"
+          />
       </div>
     );
   }
