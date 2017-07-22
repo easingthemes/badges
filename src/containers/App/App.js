@@ -1,29 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
-import { getBadges } from '../Badges/actions';
-
+import Home from '../Home';
+import Pathways from '../Pathways';
 import Badges from '../Badges';
+import Badge from '../Badge';
 
 import Header from '../../components/Header';
 import "./styles.css";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.handleGetBadges();
-  }
-
   render() {
     return (
       <div>
         <Header location={this.props.location} />
         <div className="container">
-            <Switch>
-              <Route path="/" component={Badges} />
-              <Route path="/badges" component={Badges} />
-            </Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/pathways" component={Pathways} />
+          <Route path="/badges/:pathwayId" component={Badges} />
+          <Route path="/badge/:badgeId" component={Badge} />
         </div>
       </div>
     );
@@ -36,7 +33,6 @@ App.propTypes = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetBadges: (data) => dispatch(getBadges(data)),
     dispatch,
   };
 }
