@@ -11,6 +11,7 @@ class Navigation extends Component {
     const location = this.props.location || {};
     const pathname = location.pathname;
     const isBadgesPage = pathname.indexOf('badges') > -1;
+    const isPathwaysPage = pathname.indexOf('pathways') > -1;
 
     return (
       <nav className="navbar navbar-default navbar-static-top">
@@ -35,6 +36,11 @@ class Navigation extends Component {
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
+              <li className={isPathwaysPage ? 'active' : ''}>
+                <Link to="/pathways">
+                  Pathways
+                </Link>
+              </li>
               <li className={isBadgesPage ? 'active' : ''}>
                 <Link to="/badges">
                   Badges
