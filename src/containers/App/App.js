@@ -7,6 +7,7 @@ import Home from '../Home';
 import Pathways from '../Pathways';
 import Badges from '../Badges';
 import Badge from '../Badge';
+import Breadcrumbs from '../Breadcrumbs';
 
 import Header from '../../components/Header';
 import "./styles.css";
@@ -17,6 +18,7 @@ class App extends Component {
       <div>
         <Header location={this.props.location} />
         <div className="container">
+          <Breadcrumbs location={this.props.location} />
           <Route exact path="/" component={Home}/>
           <Route path="/pathways" component={Pathways} />
           <Route path="/badges/:pathwayId" component={Badges} />
