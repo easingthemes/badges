@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
 
 import selectBadge from './selectors';
 import {
   getBadge,
 } from './actions';
 
-import TableBadge from '../../components/Table/TableBadge';
-import BadgeLevel from './BadgeLevel';
+import TableBadgeLevel from '../../components/Table/TableBadgeLevel';
 
 class Badge extends Component {
   componentDidMount() {
     const match = this.props.match || {};
     const params = match.params || {};
-    const id = params.badgeId || '';
+    const id = params.badgeLevelId;
 
-    if (this.props.match.isExact) {
+    if (id && this.props.match.isExact) {
       this.props.handleGetBadge(id);
     }
   }
@@ -25,13 +23,10 @@ class Badge extends Component {
   render() {
     return (
       <div>
-        <Route path={`${this.props.match.url}/:badgeLevelId`} component={BadgeLevel} />
-        <Route exact path={this.props.match.url} render={() => (
-          <TableBadge
-            badge={this.props.badge}
-            url={this.props.match.url}
-          />
-        )}/>
+        <TableBadgeLevel
+          badge={this.props.badge}
+          url={this.props.match.url}
+        />
       </div>
     );
   }
@@ -47,7 +42,7 @@ const mapStateToProps = selectBadge();
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetBadge: (data) => dispatch(getBadge(data)),
+    handleGetBadge: (data) => dispatch(getBadge(data, true)),
     dispatch,
   };
 }
