@@ -6,12 +6,14 @@ import thunkMiddleware from "redux-thunk";
 import pathwaysPageReducer from '../containers/Pathways/reducer';
 import badgesPageReducer from '../containers/Badges/reducer';
 import badgePageReducer from '../containers/Badge/reducer';
+import breadcrumbsPageReducer from '../containers/Breadcrumbs/reducer';
 const initialState = fromJS({});
 
 const rootReducer = combineReducers({
   pathwaysPage: pathwaysPageReducer,
   badgesPage: badgesPageReducer,
-  badgePage: badgePageReducer
+  badgePage: badgePageReducer,
+  breadcrumbs: breadcrumbsPageReducer
 });
 
 export default function configureStore() {
