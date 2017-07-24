@@ -42,9 +42,9 @@ class Navigation extends Component {
                 </Link>
               </li>
               <li className={isBadgesPage ? 'active' : ''}>
-                <Link to="/badges">
+                <a>
                   Badges
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
