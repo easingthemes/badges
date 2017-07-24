@@ -8,6 +8,11 @@ import {
   getPathways,
 } from './actions';
 
+import {
+  addBreadcrumbs,
+  removeBreadcrumbs,
+} from '../Breadcrumbs/actions';
+
 import Table from '../../components/Table/Table';
 
 class Pathways extends Component {
@@ -15,6 +20,11 @@ class Pathways extends Component {
     if (this.props.match.isExact && this.props.pathways.length === 0) {
       this.props.handleGetPathways(PROJECT_ID);
     }
+    this.props.handleAddBreadcrumbs('Pathways');
+  }
+
+  componentWillUnmount() {
+    //this.props.handleRemoveBreadcrumbs('Pathways');
   }
 
   render() {
@@ -40,6 +50,8 @@ const mapStateToProps = selectPathways();
 function mapDispatchToProps(dispatch) {
   return {
     handleGetPathways: (projectId) => dispatch(getPathways(projectId)),
+    handleAddBreadcrumbs: (label) => dispatch(addBreadcrumbs(label)),
+    handleRemoveBreadcrumbs: (label) => dispatch(removeBreadcrumbs(label)),
     dispatch,
   };
 }
