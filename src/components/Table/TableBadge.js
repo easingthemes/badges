@@ -94,39 +94,13 @@ class TableBadge extends Component {
     }
 
     return(
-      <div>
-        <h2>{title}</h2>
-        <ReactMarkdown source={j2m.to_markdown(field)} />
-      </div>
-    );
-  }
-
-  renderCustomFields(fields) {
-    if (!fields) {
-      return(
-        <span />
-      );
-    }
-
-    return(
-      <div>
-        {this.renderCustomField(fields.customfield_20003, 'Acceptance Criteria')}
-        {this.renderCustomField(fields.customfield_20816, 'Evidence')}
-      </div>
-    );
-  }
-
-  renderDescription(description) {
-    if (description.length === 0) {
-      return(
-        <span />
-      );
-    }
-
-    return(
-      <div>
-        <h2>Description</h2>
-        <ReactMarkdown source={j2m.to_markdown(description)} />
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">{title}</h3>
+        </div>
+        <div className="panel-body">
+          <ReactMarkdown source={j2m.to_markdown(field)} />
+        </div>
       </div>
     );
   }
@@ -145,8 +119,10 @@ class TableBadge extends Component {
 
     return (
       <div>
-        {this.renderCustomFields(fields)}
-        {this.renderDescription(description)}
+        <h2>
+          <span>{fields.summary}</span> <span className="label label-success">{fields.status.name}</span>
+        </h2>
+        {this.renderCustomField(description, 'Description')}
         {this.renderTable(subTasks)}
       </div>
     );

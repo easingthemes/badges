@@ -1,0 +1,22 @@
+.badge__items ul {
+  margin: 0;
+  padding-left: 26px;
+}
+
+.badge__items li {
+  list-style: none;
+  position: relative;
+}
+.badge__items li:before {
+  content: ' ';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: -24px;
+  top: 3px;
+}
+.badge__items li.checked:before {
+  background-color: #ddd;
+}
